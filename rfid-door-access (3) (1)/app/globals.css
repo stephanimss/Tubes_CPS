@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-ring: 224 71% 45%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-ring: 224 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.glass-card {
+  @apply bg-white/90 dark:bg-black/60 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.stats-card {
+  @apply relative overflow-hidden rounded-xl border bg-gradient-to-br from-white to-gray-50 p-6 shadow-md transition-all hover:shadow-lg dark:from-gray-900 dark:to-gray-950;
+}
+
+.stats-card-icon {
+  @apply absolute right-4 top-4 rounded-full bg-primary/10 p-2.5 text-primary;
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 whitespace-nowrap overflow-hidden;
+}
+
+.sidebar-item.active {
+  @apply bg-primary text-white;
+}
+
+.table-header {
+  @apply bg-gray-50 dark:bg-gray-900;
+}
+
+.badge-success {
+  @apply bg-green-500 text-white;
+}
+
+.badge-warning {
+  @apply bg-yellow-500 text-white;
+}
+
+.badge-danger {
+  @apply bg-red-500 text-white;
+}
+
+.badge-info {
+  @apply bg-blue-500 text-white;
+}
+
+.badge-neutral {
+  @apply bg-gray-500 text-white;
+}
+
+.page-header {
+  @apply mb-8 flex flex-col items-center justify-between gap-4 border-b pb-5 sm:flex-row;
+}
+
+.page-title {
+  @apply text-3xl font-bold tracking-tight;
+}
+
+.card-header-gradient {
+  @apply bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-6 dark:from-primary/20 dark:via-primary/10 dark:to-transparent;
+}
+
+.card-grid {
+  @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.status-indicator {
+  @apply relative flex h-3 w-3;
+}
+
+.status-indicator::before {
+  @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-current opacity-75;
+  content: "";
+}
+
+.status-indicator::after {
+  @apply relative inline-flex h-3 w-3 rounded-full bg-current;
+  content: "";
+}
+
+.status-indicator.active {
+  @apply text-green-500;
+}
+
+.status-indicator.inactive {
+  @apply text-red-500;
+}
+
+.status-indicator.warning {
+  @apply text-yellow-500;
+}
